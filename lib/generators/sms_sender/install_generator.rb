@@ -1,15 +1,15 @@
 require 'rails/generators'
 require 'rails/generators/active_record'
 
-class SmsSender::Generators::InstallGenerator < Rails::Generators::Base
-  include Rails::Generators::Migration
+class SmsSender::Generators::InstallGenerator < ::Rails::Generators::Base
+  include ::Rails::Generators::Migration
 
   source_root File.expand_path('../templates', __FILE__)
 
-  desc "Generates (but does not run) a migration to add a 'sms_logs' table."
+  desc "Generates (but does not run) a migration to add a 'sms_sender_logs' table."
 
   def create_migration_file
-    add_or_skip_recorder_migration('create_recorder_revisions')
+    add_or_skip_migration('create_sms_sender_logs')
   end
 
   def self.next_migration_number(dirname)
@@ -18,7 +18,7 @@ class SmsSender::Generators::InstallGenerator < Rails::Generators::Base
 
 protected
 
-  def add_or_skip_recorder_migration(template)
+  def add_or_skip_migration(template)
     migration_dir = File.expand_path('db/migrate')
 
     if self.class.migration_exists?(migration_dir, template)
