@@ -1,6 +1,7 @@
 require 'sms_sender/version'
 require 'sms_sender/config'
 require 'sms_sender/logger'
+require 'sms_sender/process'
 
 require 'sms_sender/models/log'
 
