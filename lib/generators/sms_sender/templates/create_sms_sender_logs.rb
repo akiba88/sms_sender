@@ -5,6 +5,7 @@ class CreateSmsLogs < ActiveRecord::Migration
       t.text :content
       t.text :error_message
       t.string :status
+      t.string :channel
       t.references :item, polymorphic: true, index: true
 
       t.timestamps null: false

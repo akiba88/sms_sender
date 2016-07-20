@@ -3,14 +3,9 @@ require 'active_record'
 class SmsSender::Log < ActiveRecord::Base
   self.table_name = 'sms_sender_logs'
 
-  if ::SmsSender.active_record_protected_attributes?
-    attr_accessible(
-      :phone_number,
-      :content,
-      :status,
-      :error_message
-    )
-  end
+  # if ::SmsSender.active_record_protected_attributes?
+  #   attr_accessible(:phone_number, :content, :channel, :status, :error_message)
+  # end
 
   belongs_to :item, polymorphic: true
 
