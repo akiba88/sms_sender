@@ -3,8 +3,6 @@ require 'sms_sender/config'
 require 'sms_sender/logger'
 require 'sms_sender/process'
 
-require 'sms_sender/models/log'
-
 module SmsSender
   class << self
     # attr_reader :config
@@ -24,3 +22,5 @@ module SmsSender
     end
   end
 end
+
+require 'sms_sender/models/log'

@@ -18,6 +18,6 @@ class SmsSender::Config
   end
 
   def notifications_options=(options = {})
-	  @notifications_options = options
+    @notifications_options = options
   end
 end
