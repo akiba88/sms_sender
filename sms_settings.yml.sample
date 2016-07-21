@@ -1,0 +1,32 @@
+development:
+    main:
+        provider: 'soap'
+
+        client_options:
+            wsdl: '==wsdl_full_path=='
+            '==option_key==': '==option_value=='
+
+        call_method: '==call_method=='
+
+        message_options:
+            static:
+                '==option_key==' => '==option_value=='
+            text_key: '==text_key=='
+            phone_key: '==phone_key=='
+
+    backup:
+        provider: 'uri'
+
+        main_request:
+            url: '==main_request_full_path=='
+            static:
+                '==option_key==': '==option_value=='
+            text_key: '==text_key=='
+            phone_key: '==phone_key=='
+
+
+        status_request:
+            url: '==status_request_full_path=='
+            static:
+                '==option_key==': '==option_value=='
+            id_key: '==id_key=='

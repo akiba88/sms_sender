@@ -7,17 +7,19 @@ class SmsSender::Providers::Soap
     @channel = channel
   end
 
-  def client
-    @client ||= Savon.client(wdsl_options)
-  end
-
   def run(text, phone_number)
     client.call(options[:call_method].to_sym) do
       message(message_options(text, phone_number))
     end
+
+    {}
   end
 
 protected
+
+  def client
+    @client ||= Savon.client(wdsl_options)
+  end
 
   def options
     @options ||= SmsSender.config.options[channel.to_sym]
