@@ -30,6 +30,10 @@ protected
     self.phone_number = phone_number
   end
 
+  def logger
+    @logger ||= SmsSender::Logger.new(object)
+  end
+
   def send_process
     if SmsSender.send_out?
       self.callback = Object.const_get("SmsSender::Providers::#{provider.capitalize}").new(channel).run(content, phone_number)
@@ -60,22 +64,18 @@ protected
       } 
     }
 
-    # send_notification if Rails.env.production?
+    send_notification if SmsSender.send_out?
   end
 
-  # def send_notification
-  #   # SmsSender::Notification::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
-  # end
-
-  def logger
-    @logger ||= SmsSender::Logger.new(object)
+  def send_notification
+    SmsSender::Notifications::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
   end
 
-  # def slack_title
-  #   'Failed to send sms'
-  # end
-  #
-  # def slack_fallback
-  #   "[VN] Failed to send sms for #{object.class.name} ##{object.id}"
-  # end
+  def slack_title
+    'Failed to send sms'
+  end
+  
+  def slack_fallback
+    "[#{SmsSender.config.project}] Failed to send sms for #{object.class.name} ##{object.id}"
+  end
 end

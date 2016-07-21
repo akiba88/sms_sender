@@ -1,0 +1,11 @@
+default: &default
+	slack:
+		path: '==channel_path=='
+		channel: '==channel_id=='
+		username: '==bot_name=='
+
+		callback_url: '==callback_url=='
+
+development:
+	<<: *default
+
