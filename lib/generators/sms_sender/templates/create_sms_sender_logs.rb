@@ -1,4 +1,4 @@
-class CreateSmsLogs < ActiveRecord::Migration
+class CreateSmsSenderLogs < ActiveRecord::Migration
   def self.up
     create_table :sms_sender_logs do |t|
       t.string :phone_number

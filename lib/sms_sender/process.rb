@@ -6,6 +6,7 @@ class SmsSender::Process
   def initialize(channel)
     @channel = channel
     @provider = SmsSender.config.options[channel.to_sym][:provider]
+    @callback = {}
   end
 
   def run(object, message, phone_number)
@@ -37,19 +38,19 @@ protected
   def send_process
     if SmsSender.send_out?
       self.callback = Object.const_get("SmsSender::Providers::#{provider.capitalize}").new(channel).run(content, phone_number)
-
-      logger.success{ 
-        { 
-          content: content, 
-          phone_number: phone_number, 
-          channel: channel, 
-          response: callback[:response], 
-          status_delivery: callback[:status_delivery] 
-          } 
-        }
     else
       puts "SMS: '#{content}'"
     end
+
+    logger.success{
+      {
+        content: content,
+        phone_number: phone_number,
+        channel: channel,
+        response: callback[:response],
+        status_delivery: callback[:status_delivery]
+      }
+    }
   end
 
   def fail_process(e)

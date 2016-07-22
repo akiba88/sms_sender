@@ -1,5 +1,6 @@
 /.bundle/
 /.yardoc
+/.byebug_history
 /.idea
 /Gemfile.lock
 /_yardoc/
@@ -8,3 +9,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+/spec/dummy/config/database.yml

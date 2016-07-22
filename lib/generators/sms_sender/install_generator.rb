@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'rails/generators/active_record'
 
-class SmsSender::Generators::InstallGenerator < ::Rails::Generators::Base
+class SmsSender::InstallGenerator < ::Rails::Generators::Base
   include ::Rails::Generators::Migration
 
   source_root File.expand_path('../templates', __FILE__)

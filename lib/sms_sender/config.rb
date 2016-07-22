@@ -5,6 +5,10 @@ class SmsSender::Config
 
   attr_reader :environment, :project, :options, :notifications_options
 
+  def available_channels
+    [:main, :backup]
+  end
+
   def options=(options = {})
     @options = options
   end
