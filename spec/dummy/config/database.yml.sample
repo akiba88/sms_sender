@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  database: sms_sender_test
+  username: postgres
+  password:
+  host:     localhost
+  port:     5432
