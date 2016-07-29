@@ -6,8 +6,6 @@ require 'sms_sender/process'
 
 module SmsSender
   class << self
-    # attr_reader :config
-
     def active_record_protected_attributes?
       @active_record_protected_attributes ||= !!defined?(ProtectedAttributes)
     end
@@ -24,13 +22,13 @@ module SmsSender
   end
 end
 
-require 'sms_sender/models/log'
-
 def require_all(_dir)
   Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), _dir)) + "/**/*.rb"].each do |file|
     require file
   end
 end
+
+require 'sms_sender/models/log'
 
 require_all 'sms_sender/providers'
 require_all 'sms_sender/notifications'
