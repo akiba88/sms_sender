@@ -4,9 +4,6 @@ require 'sms_sender/config'
 require 'sms_sender/logger'
 require 'sms_sender/process'
 
-require_all 'sms_sender/providers'
-require_all 'sms_sender/notifications'
-
 module SmsSender
   class << self
     # attr_reader :config
@@ -34,3 +31,6 @@ def require_all(_dir)
     require file
   end
 end
+
+require_all 'sms_sender/providers'
+require_all 'sms_sender/notifications'
