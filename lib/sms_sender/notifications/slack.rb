@@ -6,7 +6,7 @@ module Notifications
 
     def initialize(object)
       @object = object
-      @notifier = Slack::Notifier.new(options[:path], channel: options[:channel], username: options[:username])
+      @notifier = ::Slack::Notifier.new(options[:path], channel: options[:channel], username: options[:username])
     end
 
     def run(title, fallback, type)
