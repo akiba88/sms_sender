@@ -18,7 +18,7 @@ module SmsSender
     end
 
     def send_out?
-      SmsSender.config.environment == 'production'
+      SmsSender.config.send_out
     end
   end
 end
