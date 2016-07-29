@@ -69,7 +69,7 @@ protected
   end
 
   def send_notification
-    SmsSender::Notifications::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
+    Notifications::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
   end
 
   def slack_title
