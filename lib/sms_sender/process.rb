@@ -37,7 +37,7 @@ protected
 
   def send_process
     if SmsSender.send_out?
-      self.callback = Object.const_get("Providers::#{provider.capitalize}").new(channel).run(content, phone_number)
+      self.callback = Object.const_get("SmsSender::Providers::#{provider.capitalize}").new(channel).run(content, phone_number)
     else
       puts "SMS: '#{content}'"
     end
