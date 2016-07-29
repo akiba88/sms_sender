@@ -4,8 +4,8 @@ require 'sms_sender/config'
 require 'sms_sender/logger'
 require 'sms_sender/process'
 
-Dir["./lib/sms_sender/providers/*.rb"].each { |file| require file }
-Dir["./lib/sms_sender/notifications/*.rb"].each { |file| require file }
+require_all 'sms_sender/providers'
+require_all 'sms_sender/notifications'
 
 module SmsSender
   class << self
@@ -28,3 +28,9 @@ module SmsSender
 end
 
 require 'sms_sender/models/log'
+
+def require_all(_dir)
+  Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), _dir)) + "/**/*.rb"].each do |file|
+    require file
+  end
+end
