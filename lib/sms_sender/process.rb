@@ -5,7 +5,7 @@ class SmsSender::Process
 
   def initialize(channel)
     @channel = channel
-    @provider = SmsSender.config.options[channel.to_sym][:provider]
+    @provider = SmsSender.config.options[channel]['provider']
     @callback = {}
   end
 
