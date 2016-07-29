@@ -1,7 +1,11 @@
 require 'sms_sender/version'
 require 'sms_sender/config'
+
 require 'sms_sender/logger'
 require 'sms_sender/process'
+
+Dir["sms_sender/providers/*.rb"].each { |file| require file }
+Dir["sms_sender/notifications/*.rb"].each { |file| require file }
 
 module SmsSender
   class << self
