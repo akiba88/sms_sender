@@ -6,7 +6,7 @@ module Notifications
 
     def initialize(object)
       @object = object
-      @notifier = ::Slack::Notifier.new(options[:path], channel: options[:channel], username: options[:username])
+      @notifier = ::Slack::Notifier.new(options['path'], channel: options['channel'], username: options['username'])
     end
 
     def run(title, fallback, type)
@@ -16,7 +16,7 @@ module Notifications
   protected
 
     def options
-      @options ||= SmsSender.config.notifications_options[:slack]
+      @options ||= SmsSender.config.notifications_options['slack']
     end
 
     def notifier_params(title, fallback, type)
@@ -25,7 +25,7 @@ module Notifications
           {
             color: 'danger',
             title: title,
-            title_link: options[:callback_url],
+            title_link: options['callback_url'],
             fallback: fallback,
             fields: [
               {
