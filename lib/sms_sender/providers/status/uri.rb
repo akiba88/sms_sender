@@ -1,12 +1,12 @@
 module SmsSender
   module Providers
-    module Uri
-	  class Status
-	  	def get(id_transaction)
-		  HTTP.get(request_url, params: request_params(id_transaction))
-  		end
+    module Status
+  	  class Uri
+  	  	def get(id_transaction)
+  		    HTTP.get(request_url, params: request_params(id_transaction))
+    		end
 
-	  protected
+      protected
 
         def request_url
           @request_path ||= options['status_request']['url']
@@ -20,7 +20,7 @@ module SmsSender
 
           @request_params = hash
         end
-	  end
-	end
+  	  end
+  	end
   end
 end
