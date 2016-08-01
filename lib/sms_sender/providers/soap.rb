@@ -25,7 +25,11 @@ module SmsSender
       end
 
       def wdsl_options
-        @wdsl_options ||= options['client_options']
+        return @wdsl_options if defined?(@wdsl_options)
+
+        @wdsl_options = options['client_options']
+        @wdsl_options['ssl_verify_mode'] = @wdsl_options['ssl_verify_mode'].to_sym if @wdsl_options.has_key?('ssl_verify_mode')
+        @wdsl_options
       end
 
       def message_options(text, phone_number)
