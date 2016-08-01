@@ -3,10 +3,11 @@ require 'savon'
 module SmsSender
   module Providers
     class Soap
-      attr_reader :channel
+      attr_reader :channel, :options
 
       def initialize(channel)
         @channel = channel
+        @options = SmsSender.config.options[channel]
       end
 
       def run(text, phone_number)
@@ -21,10 +22,6 @@ module SmsSender
 
       def client
         @client ||= Savon.client(wdsl_options)
-      end
-
-      def options
-        @options ||= SmsSender.config.options[channel]
       end
 
       def wdsl_options

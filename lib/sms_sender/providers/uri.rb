@@ -1,12 +1,13 @@
 module SmsSender
   module Providers
     class Uri
-      attr_reader :channel
+      attr_reader :channel, :options
 
       attr_accessor :response, :id_transaction, :content, :phone_number
 
       def initialize(channel)
         @channel = channel
+        @options = SmsSender.config.options[channel]
       end
 
       def run(text, phone_number)
@@ -26,10 +27,6 @@ module SmsSender
 
         self.response = get
         self.id_transaction = response.split('|').last
-      end
-
-      def options
-        @options ||= SmsSender.config.options[channel]
       end
 
       def get
