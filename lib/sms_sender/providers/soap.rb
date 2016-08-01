@@ -11,7 +11,7 @@ module SmsSender
       end
 
       def run(text, phone_number)
-        client.call(options['call_method']) do
+        client.call(options['call_method'].to_sym) do
           message(message_options(text, phone_number))
         end
 
