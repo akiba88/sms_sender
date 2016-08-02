@@ -34,9 +34,7 @@ module SmsSender
       end
 
       def get_status
-        return nil if options['status_request'].nil?
-
-        SmsSender::Providers::Status::Uri.get(id_transaction)
+        SmsSender::Providers::Status::Uri.get(id_transaction) if options['status_request'].nil?
       end
 
       def request_url
