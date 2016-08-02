@@ -26,11 +26,13 @@ module SmsSender
         self.phone_number = phone_number
 
         self.response = get
+
+        # TODO get customize id_transaction
         self.id_transaction = response.split('|').last
       end
 
       def get
-        HTTP.get(main_request_url, params: main_request_params)
+        HTTP.get(request_url, params: request_params)
       end
 
       def get_status

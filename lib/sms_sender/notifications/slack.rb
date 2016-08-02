@@ -19,13 +19,18 @@ module Notifications
       @options ||= SmsSender.config.notifications_options['slack']
     end
 
+    def callback_url
+      # TODO fix this
+      "http://#{options['callback_host']}/admin/#{object.class.name.underscore.split('/').first}/#{object.id}"
+    end
+
     def notifier_params(title, fallback, type)
       {
         attachments: [
           {
             color: 'danger',
             title: title,
-            title_link: options['callback_url'],
+            title_link: callback_url,
             fallback: fallback,
             fields: [
               {

@@ -11,17 +11,15 @@ module SmsSender
       end
 
       def run(text, phone_number)
-        response = client.call(options['call_method'].to_sym, message: message_options(text, phone_number))
-
         {
-          response: response
+          response: client.call(options['call_method'].to_sym, message: message_options(text, phone_number))
         }
       end
 
     protected
 
       def client
-        @client ||= Savon.client wdsl_options
+        @client ||= Savon.client(wdsl_options)
       end
 
       def wdsl_options

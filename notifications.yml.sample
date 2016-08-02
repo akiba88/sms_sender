@@ -4,7 +4,7 @@ default: &default
 		channel: '==channel_id=='
 		username: '==bot_name=='
 
-		callback_url: '==callback_url=='
+		callback_host: '==callback_host=='
 
 development:
 	<<: *default
