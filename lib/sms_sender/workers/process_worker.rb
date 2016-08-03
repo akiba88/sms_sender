@@ -1,3 +1,5 @@
+require 'Sidekiq'
+
 module SmsSender
   module Workers
     class ProcessWorker
