@@ -29,6 +29,7 @@ def require_all(_dir)
 end
 
 require 'sms_sender/models/log'
+require 'sms_sender/workers/process_worker'
 
 require_all 'sms_sender/providers'
 require_all 'sms_sender/notifications'
