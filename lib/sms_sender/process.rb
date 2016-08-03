@@ -10,9 +10,9 @@ class SmsSender::Process
   end
 
   def run(object, message, phone_number)
-    begin
-      setup(object, message, phone_number)
+    setup(object, message, phone_number)
 
+    begin
       send_process
 
       return true
