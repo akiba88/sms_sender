@@ -5,14 +5,14 @@ class SmsSender::Process
 
   def initialize(channel)
     @channel = channel
-    @provider = SmsSender.config.options[channel.to_sym][:provider]
+    @provider = SmsSender.config.options[channel]['provider']
     @callback = {}
   end
 
   def run(object, message, phone_number)
-    begin
-      setup(object, message, phone_number)
+    setup(object, message, phone_number)
 
+    begin
       send_process
 
       return true
@@ -69,7 +69,7 @@ protected
   end
 
   def send_notification
-    SmsSender::Notifications::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
+    Notifications::Slack.new(object).run(slack_title, slack_fallback, 'send_sms')
   end
 
   def slack_title

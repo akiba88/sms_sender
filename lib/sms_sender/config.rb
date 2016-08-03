@@ -3,7 +3,7 @@ require 'singleton'
 class SmsSender::Config
   include Singleton
 
-  attr_reader :environment, :project, :options, :notifications_options
+  attr_reader :environment, :project, :options, :notifications_options, :send_out
 
   def available_channels
     [:main, :backup]
@@ -23,5 +23,9 @@ class SmsSender::Config
 
   def notifications_options=(options = {})
     @notifications_options = options
+  end
+
+  def send_out=(val)
+    @send_out = val
   end
 end
