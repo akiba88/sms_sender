@@ -20,4 +20,10 @@ class SmsSender::Log < ActiveRecord::Base
   def error?
     status == 'error'
   end
+
+  def status_label
+    return content_tag(:span, 'Success', class: 'label label-success') if success?
+
+    content_tag(:span, 'Error', class: 'label label-danger')
+  end
 end

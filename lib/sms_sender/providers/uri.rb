@@ -27,7 +27,7 @@ module SmsSender
 
         self.response = get
 
-        # TODO get customize id_transaction
+        # TODO customize id_transaction
         self.id_transaction = response.split('|').last
       end
 
@@ -36,7 +36,7 @@ module SmsSender
       end
 
       def get_status
-        SmsSender::Providers::Status::Uri.get(id_transaction) if options['status_request'].nil?
+        SmsSender::Providers::Status::Uri.get(id_transaction) if options['status_request'].present?
       end
 
       def request_url
