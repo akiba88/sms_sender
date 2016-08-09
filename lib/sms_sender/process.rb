@@ -1,3 +1,6 @@
+require 'savon'
+require 'http'
+
 class SmsSender::Process
   attr_reader :channel, :provider
 
@@ -5,7 +8,7 @@ class SmsSender::Process
 
   def initialize(channel)
     @channel = channel
-    @provider = SmsSender.config.options[channel]['provider']
+    @provider = Sms[channel]['provider']
     @callback = {}
   end
 

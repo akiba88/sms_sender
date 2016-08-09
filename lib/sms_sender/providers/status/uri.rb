@@ -3,7 +3,7 @@ module SmsSender
     module Status
   	  class Uri
   	  	def get(id_transaction)
-  		    ::HTTP.get(request_url, params: request_params(id_transaction))
+  		    HTTP.get(request_url, params: request_params(id_transaction))
     		end
 
       protected
