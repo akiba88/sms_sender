@@ -1,4 +1,4 @@
-require 'Sidekiq'
+require 'sidekiq'
 
 module SmsSender
   module Workers
