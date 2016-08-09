@@ -25,10 +25,10 @@ module SmsSender
         self.content = text
         self.phone_number = phone_number
 
-        self.response = get
+        self.response = get.body.to_s
 
         # TODO customize id_transaction
-        self.id_transaction = response.split('|').last
+        self.id_transaction = response.split('|').last if response.present?
       end
 
       def get
