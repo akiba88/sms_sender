@@ -1,5 +1,3 @@
-require 'savon'
-
 module SmsSender
   module Providers
     class Soap
