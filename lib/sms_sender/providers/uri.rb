@@ -32,7 +32,7 @@ module SmsSender
       end
 
       def get
-        HTTP.get(request_url, params: request_params)
+        ::HTTP.get(request_url, params: request_params)
       end
 
       def get_status
